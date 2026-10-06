@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-fg: #0f172a;
+  --color-fg-muted: #475569;
+  --color-border: #e2e8f0;
+  --color-primary: #4f46e5;
+  --color-primary-fg: #ffffff;
+
+  --color-confidence-high-bg: #dcfce7;
+  --color-confidence-high-fg: #166534;
+  --color-confidence-medium-bg: #fef3c7;
+  --color-confidence-medium-fg: #92400e;
+  --color-confidence-low-bg: #fee2e2;
+  --color-confidence-low-fg: #991b1b;
+}
+
+.dark {
+  --color-bg: #0f172a;
+  --color-surface: #1e293b;
+  --color-fg: #f1f5f9;
+  --color-fg-muted: #94a3b8;
+  --color-border: #334155;
+  --color-primary: #818cf8;
+  --color-primary-fg: #0f172a;
+
+  --color-confidence-high-bg: rgba(34, 197, 94, 0.16);
+  --color-confidence-high-fg: #86efac;
+  --color-confidence-medium-bg: rgba(245, 158, 11, 0.16);
+  --color-confidence-medium-fg: #fcd34d;
+  --color-confidence-low-bg: rgba(239, 68, 68, 0.16);
+  --color-confidence-low-fg: #fca5a5;
+}
+
+/*
+ * next-themes toggles dark mode by adding a "dark"/"light" class to <html> via
+ * an inline script, so JS-disabled visitors never get either class and always
+ * fell back to the light palette above. This restores OS-preference dark mode
+ * for that case: it only applies when neither class is present, so it never
+ * fights an explicit choice next-themes has already applied.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not(.dark) {
+    --color-bg: #0f172a;
+    --color-surface: #1e293b;
+    --color-fg: #f1f5f9;
+    --color-fg-muted: #94a3b8;
+    --color-border: #334155;
+    --color-primary: #818cf8;
+    --color-primary-fg: #0f172a;
+
+    --color-confidence-high-bg: rgba(34, 197, 94, 0.16);
+    --color-confidence-high-fg: #86efac;
+    --color-confidence-medium-bg: rgba(245, 158, 11, 0.16);
+    --color-confidence-medium-fg: #fcd34d;
+    --color-confidence-low-bg: rgba(239, 68, 68, 0.16);
+    --color-confidence-low-fg: #fca5a5;
+  }
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
